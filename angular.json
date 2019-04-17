@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -134,7 +134,135 @@
           }
         }
       }
+    },
+    "rxjs-observables-finite-and-infinite": {
+      "root": "projects/rxjs-observables-finite-and-infinite/",
+      "sourceRoot": "projects/rxjs-observables-finite-and-infinite/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rxjs-observables-finite-and-infinite",
+            "index": "projects/rxjs-observables-finite-and-infinite/src/index.html",
+            "main": "projects/rxjs-observables-finite-and-infinite/src/main.ts",
+            "polyfills": "projects/rxjs-observables-finite-and-infinite/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-observables-finite-and-infinite/tsconfig.app.json",
+            "assets": [
+              "projects/rxjs-observables-finite-and-infinite/src/favicon.ico",
+              "projects/rxjs-observables-finite-and-infinite/src/assets"
+            ],
+            "styles": [
+              "projects/rxjs-observables-finite-and-infinite/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rxjs-observables-finite-and-infinite/src/environments/environment.ts",
+                  "with": "projects/rxjs-observables-finite-and-infinite/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rxjs-observables-finite-and-infinite:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rxjs-observables-finite-and-infinite:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rxjs-observables-finite-and-infinite:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rxjs-observables-finite-and-infinite/src/test.ts",
+            "polyfills": "projects/rxjs-observables-finite-and-infinite/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-observables-finite-and-infinite/tsconfig.spec.json",
+            "karmaConfig": "projects/rxjs-observables-finite-and-infinite/karma.conf.js",
+            "styles": [
+              "projects/rxjs-observables-finite-and-infinite/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/rxjs-observables-finite-and-infinite/src/favicon.ico",
+              "projects/rxjs-observables-finite-and-infinite/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rxjs-observables-finite-and-infinite/tsconfig.app.json",
+              "projects/rxjs-observables-finite-and-infinite/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rxjs-observables-finite-and-infinite-e2e": {
+      "root": "projects/rxjs-observables-finite-and-infinite-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rxjs-observables-finite-and-infinite-e2e/protractor.conf.js",
+            "devServerTarget": "rxjs-observables-finite-and-infinite:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rxjs-observables-finite-and-infinite:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/rxjs-observables-finite-and-infinite-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "lessons-angular"
+  "defaultProject": "rxjs-observables-finite-and-infinite"
 }
