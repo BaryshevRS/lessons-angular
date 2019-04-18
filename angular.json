@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rxjs-observables-finite-and-infinite": {
-      "root": "projects/rxjs-observables-finite-and-infinite/",
-      "sourceRoot": "projects/rxjs-observables-finite-and-infinite/src",
+    "rxjs-when-unsubscribe": {
+      "root": "projects/rxjs-when-unsubscribe/",
+      "sourceRoot": "projects/rxjs-when-unsubscribe/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -13,17 +13,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rxjs-observables-finite-and-infinite",
-            "index": "projects/rxjs-observables-finite-and-infinite/src/index.html",
-            "main": "projects/rxjs-observables-finite-and-infinite/src/main.ts",
-            "polyfills": "projects/rxjs-observables-finite-and-infinite/src/polyfills.ts",
-            "tsConfig": "projects/rxjs-observables-finite-and-infinite/tsconfig.app.json",
+            "outputPath": "dist/rxjs-when-unsubscribe",
+            "index": "projects/rxjs-when-unsubscribe/src/index.html",
+            "main": "projects/rxjs-when-unsubscribe/src/main.ts",
+            "polyfills": "projects/rxjs-when-unsubscribe/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-when-unsubscribe/tsconfig.app.json",
             "assets": [
-              "projects/rxjs-observables-finite-and-infinite/src/favicon.ico",
-              "projects/rxjs-observables-finite-and-infinite/src/assets"
+              "projects/rxjs-when-unsubscribe/src/favicon.ico",
+              "projects/rxjs-when-unsubscribe/src/assets"
             ],
             "styles": [
-              "projects/rxjs-observables-finite-and-infinite/src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/rxjs-when-unsubscribe/src/styles.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -32,8 +33,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/rxjs-observables-finite-and-infinite/src/environments/environment.ts",
-                  "with": "projects/rxjs-observables-finite-and-infinite/src/environments/environment.prod.ts"
+                  "replace": "projects/rxjs-when-unsubscribe/src/environments/environment.ts",
+                  "with": "projects/rxjs-when-unsubscribe/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -58,34 +59,35 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rxjs-observables-finite-and-infinite:build"
+            "browserTarget": "rxjs-when-unsubscribe:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rxjs-observables-finite-and-infinite:build:production"
+              "browserTarget": "rxjs-when-unsubscribe:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rxjs-observables-finite-and-infinite:build"
+            "browserTarget": "rxjs-when-unsubscribe:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/rxjs-observables-finite-and-infinite/src/test.ts",
-            "polyfills": "projects/rxjs-observables-finite-and-infinite/src/polyfills.ts",
-            "tsConfig": "projects/rxjs-observables-finite-and-infinite/tsconfig.spec.json",
-            "karmaConfig": "projects/rxjs-observables-finite-and-infinite/karma.conf.js",
+            "main": "projects/rxjs-when-unsubscribe/src/test.ts",
+            "polyfills": "projects/rxjs-when-unsubscribe/src/polyfills.ts",
+            "tsConfig": "projects/rxjs-when-unsubscribe/tsconfig.spec.json",
+            "karmaConfig": "projects/rxjs-when-unsubscribe/karma.conf.js",
             "styles": [
-              "projects/rxjs-observables-finite-and-infinite/src/styles.css"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/rxjs-when-unsubscribe/src/styles.css"
             ],
             "scripts": [],
             "assets": [
-              "projects/rxjs-observables-finite-and-infinite/src/favicon.ico",
-              "projects/rxjs-observables-finite-and-infinite/src/assets"
+              "projects/rxjs-when-unsubscribe/src/favicon.ico",
+              "projects/rxjs-when-unsubscribe/src/assets"
             ]
           }
         },
@@ -93,8 +95,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/rxjs-observables-finite-and-infinite/tsconfig.app.json",
-              "projects/rxjs-observables-finite-and-infinite/tsconfig.spec.json"
+              "projects/rxjs-when-unsubscribe/tsconfig.app.json",
+              "projects/rxjs-when-unsubscribe/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -104,5 +106,5 @@
       }
     }
   },
-  "defaultProject": "rxjs-observables-finite-and-infinite"
+  "defaultProject": "rxjs-when-unsubscribe"
 }

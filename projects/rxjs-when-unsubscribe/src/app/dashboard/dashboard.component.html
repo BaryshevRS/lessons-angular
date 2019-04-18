@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>RxJs. когда нужно отписываться (unsubscribe)</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="grid-container">
+
+
+  <h1 class="mat-h1">Демонстрация подписки в компоненте</h1>
+
+  <p>Этот пример демонстрирует какие методы отписки работают, какие нет на примере interval.</p>
+
+  <p> Запустите компонент, а затем уничтожите и посмотрите, что будет в консоле.
+    После уничтожения компонента - интервал продолжит выполняться.</p>
+
+  <div *ngFor="let log of logs">
+    <p>{{log}}</p>
+  </div>
+
+  <mat-card class="example-card">
+
+    <mat-card-content>
+      <p>Подписка в шаблоне создана / отменена.</p>
+      <p>Подписка в компоненте создана / отменена.</p>
+      <p>Подписка (без отписки) создана / не отменена.</p>
+      <p>Подписка с условием takeWhile создана / не отменена.</p>
+      <app-infinite (events)="events($event)" *ngIf="componentActive"></app-infinite>
+    </mat-card-content>
+
+    <mat-card-actions>
+
+      <button (click)="initComponent(true)" mat-raised-button color="primary">Создать компонент</button>
+      <button (click)="initComponent(false)" mat-raised-button color="accent">Уничтожить компонент</button>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+
+
+
+</div>
