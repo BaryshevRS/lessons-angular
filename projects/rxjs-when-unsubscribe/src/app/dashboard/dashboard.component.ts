@@ -1,28 +1,52 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
-import {Subscribable, Subscription} from "rxjs";
-import {ChangeDetection} from "@angular/cli/lib/config/schema";
+import IntervalStatus from "../classes/IntervalStatus";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
 
-  constructor(private cd: ChangeDetectorRef) {}
+  constructor(private cd: ChangeDetectorRef) {
+  }
 
   componentActive = false;
 
-  logs = [];
+  intervalCommon: IntervalStatus;
+  intervalMemoryLeak: IntervalStatus;
+  intervalTakeWhileMemoryLeak: IntervalStatus;
+  intervalTemplate: IntervalStatus;
 
   initComponent(value: boolean = false) {
     this.componentActive = value;
   }
 
-  events(subcribe: Subscription) {
-      this.logs.push(subcribe.closed);
-      this.cd.detectChanges();
-      console.log('subcribe', subcribe);
+  eventsIntervalCommon(intervalStatus: IntervalStatus) {
+    console.log('intervalStatus', intervalStatus);
 
+    this.intervalCommon = intervalStatus;
+    this.cd.detectChanges();
+  }
+
+  eventsIntervalMemoryLeak(intervalStatus: IntervalStatus) {
+    console.log('intervalStatus', intervalStatus);
+
+    this.intervalMemoryLeak = intervalStatus;
+    this.cd.detectChanges();
+  }
+
+  eventsIntervalTakeWhileMemoryLeak(intervalStatus: IntervalStatus) {
+    console.log('intervalStatus', intervalStatus);
+
+    this.intervalTakeWhileMemoryLeak = intervalStatus;
+    this.cd.detectChanges();
+  }
+
+  eventsIntervalTemplate(intervalStatus: IntervalStatus) {
+    console.log('intervalStatus', intervalStatus);
+
+    this.intervalTemplate = intervalStatus;
+    this.cd.detectChanges();
   }
 }

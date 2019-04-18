@@ -7,7 +7,7 @@
 <div class="grid-container">
 
 
-  <h1 class="mat-h1">Демонстрация подписки в компоненте</h1>
+  <h1 class="mat-h1">Демонстрация подписок</h1>
 
   <p>Этот пример демонстрирует какие методы отписки работают, какие нет на примере interval.</p>
 
@@ -21,11 +21,38 @@
   <mat-card class="example-card">
 
     <mat-card-content>
-      <p>Подписка в шаблоне создана / отменена.</p>
-      <p>Подписка в компоненте создана / отменена.</p>
-      <p>Подписка (без отписки) создана / не отменена.</p>
-      <p>Подписка с условием takeWhile создана / не отменена.</p>
-      <app-infinite (events)="events($event)" *ngIf="componentActive"></app-infinite>
+
+      <div *ngIf="intervalCommon">
+        <h2>Отписка по фильтру takeUntil</h2>
+        <p>Подписка в шаблоне <span class="active" *ngIf="intervalCommon.status">создана</span>
+          <span class="inactive" *ngIf="!intervalCommon.status">отменена</span>.</p>
+      </div>
+
+      <div *ngIf="intervalMemoryLeak">
+        <h2>Без отписки вообще</h2>
+        <p>Подписка в компоненте создана / отменена.</p>
+      </div>
+
+      <div *ngIf="intervalTakeWhileMemoryLeak">
+        <h2>Без отписки вообще</h2>
+        <p>Подписка (без отписки) создана / не отменена.</p>
+      </div>
+
+      <div *ngIf="intervalTemplate">
+        <p>Подписка с условием takeWhile создана / не отменена.</p>
+      </div>
+
+
+      <app-infinite
+        (eventsIntervalCommon)="eventsIntervalCommon($event)"
+        (eventsIntervalMemoryLeak)="eventsIntervalMemoryLeak($event)"
+        (eventsIntervalTakeWhileMemoryLeak)="eventsIntervalTakeWhileMemoryLeak($event)"
+        (eventsIntervalTemplate)="eventsIntervalTemplate($event)"
+        *ngIf="componentActive">
+
+      </app-infinite>
+
+
     </mat-card-content>
 
     <mat-card-actions>
