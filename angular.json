@@ -4,7 +4,7 @@
   "newProjectRoot": "projects",
   "projects": {
     "rxjs-when-unsubscribe": {
-      "root": "projects/rxjs-when-unsubscribe/",
+      "root": "",
       "sourceRoot": "projects/rxjs-when-unsubscribe/src",
       "projectType": "application",
       "prefix": "app",
