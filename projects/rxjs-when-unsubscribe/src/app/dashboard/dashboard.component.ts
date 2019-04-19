@@ -20,31 +20,36 @@ export class DashboardComponent {
 
   initComponent(value: boolean = false) {
     this.componentActive = value;
+
+    this.intervalCommon = null;
+    this.intervalMemoryLeak = null;
+    this.intervalTakeWhileMemoryLeak = null;
+    this.intervalTemplate = null;
   }
 
   eventsIntervalCommon(intervalStatus: IntervalStatus) {
-    console.log('intervalStatus', intervalStatus);
+    // console.log('intervalStatus', intervalStatus);
 
     this.intervalCommon = intervalStatus;
     this.cd.detectChanges();
   }
 
   eventsIntervalMemoryLeak(intervalStatus: IntervalStatus) {
-    console.log('intervalStatus', intervalStatus);
+    // console.log('intervalStatus', intervalStatus);
 
     this.intervalMemoryLeak = intervalStatus;
     this.cd.detectChanges();
   }
 
   eventsIntervalTakeWhileMemoryLeak(intervalStatus: IntervalStatus) {
-    console.log('intervalStatus', intervalStatus);
+    // console.log('intervalStatus', intervalStatus);
 
     this.intervalTakeWhileMemoryLeak = intervalStatus;
     this.cd.detectChanges();
   }
 
   eventsIntervalTemplate(intervalStatus: IntervalStatus) {
-    console.log('intervalStatus', intervalStatus);
+    // console.log('intervalStatus', intervalStatus);
 
     this.intervalTemplate = intervalStatus;
     this.cd.detectChanges();

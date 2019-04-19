@@ -9,39 +9,53 @@
 
   <h1 class="mat-h1">Демонстрация подписок</h1>
 
-  <p>Этот пример демонстрирует какие методы отписки работают, какие нет на примере interval.</p>
+  <p>Этот пример демонстрирует какие методы отписки работают, а какие нет на примере interval.</p>
 
-  <p> Запустите компонент, а затем уничтожите и посмотрите, что будет в консоле.
-    После уничтожения компонента - интервал продолжит выполняться.</p>
-
-  <div *ngFor="let log of logs">
-    <p>{{log}}</p>
-  </div>
+  <p>Для полной картины откройте консоль. Затем создайте и уничтожьте компонент.</p>
 
   <mat-card class="example-card">
 
     <mat-card-content>
 
-      <div *ngIf="intervalCommon">
-        <h2>Отписка по фильтру takeUntil</h2>
-        <p>Подписка в шаблоне <span class="active" *ngIf="intervalCommon.status">создана</span>
-          <span class="inactive" *ngIf="!intervalCommon.status">отменена</span>.</p>
-      </div>
-
       <div *ngIf="intervalMemoryLeak">
         <h2>Без отписки вообще</h2>
-        <p>Подписка в компоненте создана / отменена.</p>
+        <p>Подписка <span class="active" *ngIf="intervalMemoryLeak.status">создана ({{intervalMemoryLeak.time}})</span>
+          <span class="inactive" *ngIf="!intervalMemoryLeak.status">отменена</span>.</p>
+
+        <p>Без отписки не происходит остановка наблюдения за потоком, код по-прежнему выполняется в памяти, но без связи с ангуляром.
+        </p>
+        <p>
+          Более наглядно - это можно увидеть в консоли. Строка <i>intervalMemoryLeak</i> будет выводится, хотя компонента, её создающего, уже нет.
+          Если создать компонент заново, то появится ещё одна такая утечка памяти.
+        </p>
+к
       </div>
 
       <div *ngIf="intervalTakeWhileMemoryLeak">
-        <h2>Без отписки вообще</h2>
-        <p>Подписка (без отписки) создана / не отменена.</p>
+        <h2>Отписка по условию TakeWhile</h2>
+        <p>Подписка <span class="active" *ngIf="intervalTakeWhileMemoryLeak.status">создана ({{intervalTakeWhileMemoryLeak.time}})</span>
+          <span class="inactive" *ngIf="!intervalTakeWhileMemoryLeak.status">отменена</span>.</p>
+
+        <p>Отписка не происходит, лишь останавливает наблюдение за потоком, поэтому в консоль ничего не выводится после уничтожения компонента.
+          Тем не менее подписка оставляет ссылку на компонент, который остаётся в памяти.
+        </p>
+      </div>
+
+      <div *ngIf="intervalCommon">
+        <h2>Отписка по фильтру takeUntil</h2>
+        <p>Подписка <span class="active" *ngIf="intervalCommon.status">создана ({{intervalCommon.time}})</span>
+          <span class="inactive" *ngIf="!intervalCommon.status">отменена</span>.</p>
+
+        <p>Происходит полная отписка.</p>
       </div>
 
       <div *ngIf="intervalTemplate">
-        <p>Подписка с условием takeWhile создана / не отменена.</p>
-      </div>
+        <h2>Подписка в шаблоне</h2>
+        <p>Подписка <span class="active" *ngIf="intervalTemplate.status">создана</span>
+          <span class="inactive" *ngIf="!intervalTemplate.status">отменена</span>.</p>
 
+        <p>Происходит полная отписка. Ангуляр всё делает за нас.</p>
+      </div>
 
       <app-infinite
         (eventsIntervalCommon)="eventsIntervalCommon($event)"

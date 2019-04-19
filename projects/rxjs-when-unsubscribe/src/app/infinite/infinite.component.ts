@@ -54,11 +54,6 @@ export class InfiniteComponent implements OnInit, OnDestroy {
       });
 
     this.intervalTemplate = interval(1000);
-
-    // if(this.intervalTemplate) {
-    //   this.eventsIntervalTemplate.emit(new IntervalStatus(true, 0));
-    // }
-
   }
 
   ngOnDestroy(): void {
